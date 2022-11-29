@@ -16,26 +16,6 @@ describe('HomeScreen', () => {
 
     cy.contains('Yawn and Stretch')
     cy.contains('Rise and Shine')
-
-    cy.contains('ANXIETY')
-    cy.contains('Deep and Quick Relaxation')
-    cy.contains('Love and Peace')
-
-    cy.contains('Calming Medition')
-    cy.contains('Deep Relaxation')
-
-    cy.contains('Candle Relaxation')
-    cy.contains('Get Some Rest')
-
-    cy.contains('SLEEP')
-    cy.contains('Deep Sleep')
-    cy.contains('Wake Up Refreshed')
-
-    cy.contains('Short Sleep')
-    cy.contains('For Taking a Nap')
-
-    cy.contains('Good Sleep')
-    cy.contains('Drift Off To Sleep')
   })
 
   it('can save favourite meditations to home screen', () => {

@@ -1,18 +1,18 @@
 describe('StatsScreen', () => {
-  it('loads stats', () => {
+  it('loads Status', () => {
     cy.visit('/')
 
-    cy.contains('Stats').click()
+    cy.contains('Status').click()
 
-    cy.contains('Stats')
+    cy.contains('Status')
 
-    cy.contains('Current Streak')
-    cy.contains('0 days')
+    cy.contains('Sequências')
+    cy.contains('0 dias')
 
-    cy.contains('Total Sessions')
-    cy.contains('0 sessions')
+    cy.contains('Total')
+    cy.contains('0 sessões')
 
-    cy.contains('Time Meditating')
-    cy.contains('0 minutes')
+    cy.contains('Tempo total')
+    cy.contains('0 minutos')
   })
 })

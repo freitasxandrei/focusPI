@@ -7,7 +7,7 @@ import { openURL } from '../../../utils'
 const About = () => {
   const openAboutUs = () => {
     try {
-      openURL('https://www.heylinda.app/about')
+      openURL('focus.com')
     } catch (error) {
       console.error(error)
     }

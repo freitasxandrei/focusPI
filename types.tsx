@@ -1,7 +1,3 @@
-/**
- * Learn more about using TypeScript with React Navigation:
- * https://reactnavigation.org/docs/typescript/
- */
 
 export type NO_PARAMS = undefined
 export type RootStackParamList = {
@@ -15,9 +11,9 @@ export type MainStackParamList = {
 }
 
 export type BottomTabParamList = {
-  Home: NO_PARAMS
-  Stats: NO_PARAMS
-  Settings: NO_PARAMS
+  Início: NO_PARAMS
+  Status: NO_PARAMS
+  Configurações: NO_PARAMS
 }
 
 export type HomeParamList = {

@@ -1,29 +1,21 @@
 describe('SettingsScreen', () => {
-  it('loads settings', () => {
+  it('loads Configurações', () => {
     cy.visit('/')
 
-    cy.contains('Settings').click()
+    cy.contains('Configurações').click()
 
-    cy.contains('Settings')
+    cy.contains('Configurações')
 
-    cy.contains('Clear Data')
-    cy.contains('About')
+    cy.contains('Restaurar dados')
   })
 
-  it('can navigate to about page and back', () => {
+  it('', () => {
     cy.visit('/')
 
-    cy.contains('Settings').click()
-
-    cy.contains('About').click()
-
-    cy.contains('About')
-
-    cy.contains('Application Version')
-    cy.contains('Build Version')
+    cy.contains('Configurações').click()
 
     cy.get('[data-testid=headerBack]').click()
 
-    cy.contains('Settings')
+    cy.contains('Configurações')
   })
 })

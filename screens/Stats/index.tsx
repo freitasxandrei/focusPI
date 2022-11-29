@@ -12,7 +12,6 @@ import ManualEntry from './ManualEntry'
 import { useThemeColor } from '../../components'
 
 export default function StatsScreen() {
-  //Component key will redraw calendars color switch issue.
   const colorScheme = useColorScheme()
   const totalSessions = useAppSelector(selectTotalSessions)
   const totalDuration = useAppSelector(selectTotalDuration)
@@ -29,26 +28,17 @@ export default function StatsScreen() {
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.cards}>
           <Card style={styles.card}>
             <Card.Content style={styles.cardContent}>
-              <Icon name="Trophy" style={styles.icon} size={30} color={primary} />
-              <Paragraph>Current Streak</Paragraph>
-              <Title>
-                {streak} day{streak === 1 ? '' : 's'}
-              </Title>
-            </Card.Content>
-          </Card>
-          <Card style={styles.card}>
-            <Card.Content style={styles.cardContent}>
               <Icon name="calendar" style={styles.icon} size={30} color={primary} />
-              <Paragraph>Total Sessions</Paragraph>
+              <Paragraph> Total </Paragraph>
               <Title>
-                {totalSessions} session{totalSessions === 1 ? '' : 's'}
+                {totalSessions} presença{totalSessions === 1 ? '' : 's'}
               </Title>
             </Card.Content>
           </Card>
           <Card style={styles.card}>
             <Card.Content style={styles.cardContent}>
               <Icon name="clockcircleo" style={styles.icon} size={30} color={primary} />
-              <Paragraph>Time Meditating</Paragraph>
+              <Paragraph> Tempo treino </Paragraph>
               <Title>{listenedStat}</Title>
             </Card.Content>
           </Card>

@@ -41,7 +41,7 @@ export default function Home({ navigation }: Props) {
           subtitle={item.subtitle}
         />
         <Card.Content style={styles.cardContent}>
-          <Paragraph style={styles.cardParagraph}>{item.time} minutes</Paragraph>
+          <Paragraph style={styles.cardParagraph}>{item.time} minutos</Paragraph>
           <DownloadButton id={item.id} style={styles.downloadButton} />
         </Card.Content>
       </Card>
@@ -66,7 +66,7 @@ export default function Home({ navigation }: Props) {
           subtitle={item.subtitle}
         />
         <Card.Content style={styles.cardContent}>
-          <Paragraph style={styles.cardParagraph}>{item.time} minutes</Paragraph>
+          <Paragraph style={styles.cardParagraph}>{item.time} minutos</Paragraph>
           <DownloadButton id={item.id} style={styles.downloadButton} />
         </Card.Content>
       </Card>
@@ -75,7 +75,7 @@ export default function Home({ navigation }: Props) {
 
   return (
     <Screen scroll>
-      <Text style={styles.title}>POPULAR</Text>
+      <Text style={styles.title}> MÚSICAS PARA TREINAR </Text>
       <FlatList
         style={styles.cards}
         horizontal
@@ -84,27 +84,9 @@ export default function Home({ navigation }: Props) {
         renderItem={renderPopularCard}
         keyExtractor={({ id }) => id}
       />
-      <Text style={styles.title}>ANXIETY</Text>
-      <FlatList
-        style={styles.cards}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={meditations.anxiety}
-        renderItem={renderCard}
-        keyExtractor={({ id }) => id}
-      />
-      <Text style={styles.title}>SLEEP</Text>
-      <FlatList
-        style={styles.cards}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={meditations.sleep}
-        renderItem={renderCard}
-        keyExtractor={({ id }) => id}
-      />
       {favourites.length > 0 && (
         <>
-          <Text style={styles.title}>FAVOURITE</Text>
+          <Text style={styles.title}> MÚSICAS FAVORITAS </Text>
           <FlatList
             style={styles.cards}
             horizontal

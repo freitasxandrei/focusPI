@@ -57,16 +57,16 @@ const ManualEntry = ({ timestamp, onDismiss }: Props) => {
     <Provider>
       <Portal>
         <Dialog visible={visible} onDismiss={onDismiss}>
-          <Dialog.Title>Manual Entry</Dialog.Title>
+          <Dialog.Title> Tempo de treino </Dialog.Title>
           <Dialog.Content>
-            <Paragraph>Enter how long you meditated for</Paragraph>
+            <Paragraph> Qual foi seu tempo de treino?(minutos) </Paragraph>
             <TextInput
               testID="input"
               key={defaultValue}
               autoFocus
               defaultValue={defaultValue}
               keyboardType="number-pad"
-              label="Time in minutes"
+              label="Tempo de treino em minutos"
               maxLength={3}
               onChangeText={onChangeText}
               onSubmitEditing={onSubmit}
@@ -75,10 +75,10 @@ const ManualEntry = ({ timestamp, onDismiss }: Props) => {
           </Dialog.Content>
           <Dialog.Actions>
             <Button testID="cancel-btn" onPress={onDismiss}>
-              Cancel
+              Cancelar
             </Button>
             <Button testID="submit-btn" disabled={duration < 0} onPress={onSubmit}>
-              Submit
+              Salvar
             </Button>
           </Dialog.Actions>
         </Dialog>

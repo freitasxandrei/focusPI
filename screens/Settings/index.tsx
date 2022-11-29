@@ -16,35 +16,30 @@ const Settings = ({ navigation }: Props) => {
 
   const openPrivacyPolicy = () => {
     try {
-      openURL('https://www.heylinda.app/privacy')
+      openURL('focus.com')
     } catch (error) {
       console.error(error)
     }
   }
   const clearData = () => {
     Alert.alert(
-      'Clear Data',
-      'Are you sure you want to delete your data? All your stats will be reset. This cannot be undone.',
+      'Restaurar dados',
+      'Tem certeza que deseja apagar os dados? Não será possível recuperar.',
       [
         {
-          text: 'Clear Data',
+          text: 'Restaurar dados',
           onPress: () => dispatch(reset()),
           style: 'destructive',
         },
         {
-          text: 'Cancel',
+          text: 'Cancelar',
         },
       ]
     )
   }
   return (
     <>
-      <List.Item title="Clear Data" onPress={clearData} />
-      <Divider />
-      <List.Item title="Privacy Policy" onPress={openPrivacyPolicy} />
-      <Divider />
-      <List.Item title="About" onPress={() => navigation.navigate('AboutScreen')} />
-      <Divider />
+      <List.Item title="Restaurar dados" onPress={clearData} />
     </>
   )
 }
