@@ -1,6 +1,6 @@
 import { StackNavigationProp } from '@react-navigation/stack'
 import * as React from 'react'
-import { StyleSheet, FlatList } from 'react-native'
+import { StyleSheet, FlatList, View } from 'react-native'
 import { Card, Paragraph } from 'react-native-paper'
 import Screen from '../../components/Screen'
 
@@ -8,7 +8,7 @@ import DownloadButton from '../../components/DownloadButton'
 
 import { Text, useThemeColor } from '../../components/Themed'
 import Colors from '../../constants/Colors'
-import { meditations, MeditationItem } from '../../data/meditations'
+import { trainings, TrainingItem } from '../../data/trainings'
 import { HomeParamList } from '../../types'
 import { useAppSelector } from '../../hooks'
 import { selectFavourites } from '../../redux/selectors'
@@ -22,8 +22,9 @@ export default function Home({ navigation }: Props) {
 
   const favourites = useAppSelector(selectFavourites)
 
-  const renderPopularCard = ({ item }: MeditationItem) => {
+  const renderPopularCard = ({ item }: TrainingItem) => {
     return (
+      <View>
       <Card
         elevation={1}
         style={styles.card}
@@ -45,10 +46,11 @@ export default function Home({ navigation }: Props) {
           <DownloadButton id={item.id} style={styles.downloadButton} />
         </Card.Content>
       </Card>
+      </View>
     )
   }
 
-  const renderCard = ({ item }: MeditationItem) => {
+  const renderCard = ({ item }: TrainingItem) => {
     return (
       <Card
         style={styles.card}
@@ -75,12 +77,12 @@ export default function Home({ navigation }: Props) {
 
   return (
     <Screen scroll>
-      <Text style={styles.title}> MÚSICAS PARA TREINAR </Text>
+      <Text style={styles.title}> MÚSICAS CALMAS PARA ALONGAR </Text>
       <FlatList
         style={styles.cards}
         horizontal
         showsHorizontalScrollIndicator={false}
-        data={meditations.popular}
+        data={trainings.popular}
         renderItem={renderPopularCard}
         keyExtractor={({ id }) => id}
       />

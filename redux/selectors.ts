@@ -6,14 +6,14 @@ interface Calendar {
     selected: boolean
   }
 }
-export const selectFilePaths = (state: RootState) => state.meditation.filepaths || []
-export const selectActivity = (state: RootState) => state.meditation.activity
-export const selectFavourites = (state: RootState) => state.meditation.favourites || []
+export const selectFilePaths = (state: RootState) => state.training.filepaths || []
+export const selectActivity = (state: RootState) => state.training.activity
+export const selectFavourites = (state: RootState) => state.training.favourites || []
 export const selectTotalSessions = (state: RootState) =>
-  Object.keys(state.meditation.activity).length || 0
+  Object.keys(state.training.activity).length || 0
 export const selectTotalDuration = (state: RootState) => {
   let total: number = 0
-  Object.values(state.meditation.activity).forEach((a) => {
+  Object.values(state.training.activity).forEach((a) => {
     if (a.duration) {
       total += a.duration
     }
@@ -21,7 +21,7 @@ export const selectTotalDuration = (state: RootState) => {
   return total
 }
 export const selectCalendar = (state: RootState) => {
-  const { activity } = state.meditation
+  const { activity } = state.training
   const calendar: Calendar = {}
   Object.keys(activity).forEach((k) => {
     const date = dayjs(parseInt(k, 10)).format('YYYY-MM-DD')

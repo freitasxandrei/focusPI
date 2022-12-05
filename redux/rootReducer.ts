@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import meditationReducer from './meditationSlice'
+import trainingReducer from './trainingSlice'
 
 const rootReducer = combineReducers({
-  meditation: meditationReducer,
+  training: trainingReducer,
 })
 
 export default rootReducer

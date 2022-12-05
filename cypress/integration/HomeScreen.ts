@@ -8,7 +8,7 @@ describe('HomeScreen', () => {
     cy.contains('Power of Love')
     cy.contains('Love and Peace')
 
-    cy.contains('Quick Powerful Meditation')
+    cy.contains('Quick Powerful Training')
     cy.contains('Busy At Work')
 
     cy.contains('Deep Breathing')
@@ -18,7 +18,7 @@ describe('HomeScreen', () => {
     cy.contains('Rise and Shine')
   })
 
-  it('can save favourite meditations to home screen', () => {
+  it('can save favourite trainings to home screen', () => {
     cy.visit('/')
 
     cy.contains('Power of Love').click()

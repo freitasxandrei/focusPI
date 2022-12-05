@@ -3,8 +3,8 @@ import { StyleSheet, TextStyle } from 'react-native'
 import { AntDesign as Icon } from '@expo/vector-icons'
 import * as FileSystem from 'expo-file-system'
 
-import { useMeditation, useAppDispatch } from '../hooks'
-import { addFilePath } from '../redux/meditationSlice'
+import { useTraining, useAppDispatch } from '../hooks'
+import { addFilePath } from '../redux/trainingSlice'
 import { useFiles } from '../hooks/useFiles'
 import { selectFilePaths } from '../redux/selectors'
 import { useAppSelector } from '../hooks'
@@ -20,9 +20,9 @@ interface Props {
 export default function DownloadButton(props: Props) {
   const { id, style } = props
   const [downloading, setDownloading] = useState(false)
-  const meditation = useMeditation(id)
+  const training = useTraining(id)
   const files = useFiles('.mp3')
-  const uri = meditation?.uri || ''
+  const uri = training?.uri || ''
   const [audioFiles, setAudioFiles] = useState<string[]>([])
   const [downloaded, setDownloaded] = useState(false)
   const dispatch = useAppDispatch()
@@ -39,25 +39,25 @@ export default function DownloadButton(props: Props) {
 
   useEffect(() => {
     // If there's any downloaded audio content in filepaths, set downloaded to true and set audioFiles
-    if (filepaths.length > 0 && meditation) {
+    if (filepaths.length > 0 && training) {
       setAudioFiles(filepaths)
 
-      let name = filename(meditation.uri) || ''
+      let name = filename(training.uri) || ''
       let isDownloaded = audioFiles.find((a) => filename(a) === name)
 
       if (isDownloaded) {
         setDownloaded(true)
       }
     }
-  }, [audioFiles, files, downloaded, dispatch, meditation, filepaths])
+  }, [audioFiles, files, downloaded, dispatch, training, filepaths])
 
   const saveAudioFile = async () => {
     let base = await FileSystem.documentDirectory
-    if (!base || !meditation) {
+    if (!base || !training) {
       return
     }
 
-    const path = base + filename(meditation.uri) || ''
+    const path = base + filename(training.uri) || ''
 
     setDownloading(true)
     const downloadedFile: FileSystem.FileSystemDownloadResult = await FileSystem.downloadAsync(

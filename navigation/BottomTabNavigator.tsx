@@ -10,7 +10,6 @@ import HomeScreen from '../screens/Home'
 import PlayScreen from '../screens/Play'
 import SettingsScreen from '../screens/Settings'
 import StatsScreen from '../screens/Stats'
-import AboutPage from '../screens/Settings/About'
 import { BottomTabParamList, HomeParamList, SettingsParamList, StatsParamList } from '../types'
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>()
@@ -68,7 +67,7 @@ function TabOneNavigator() {
           name="HomeScreen"
           component={HomeScreen}
           options={{
-            headerTitle: 'Home',
+            headerTitle: 'Início',
           }}
         />
         <HomeStack.Screen
@@ -93,7 +92,7 @@ function StatsNavigator() {
         name="StatsScreen"
         component={StatsScreen}
         options={{
-          headerTitle: 'Stats',
+          headerTitle: 'Status',
           headerStyle: styles.header,
           headerTitleStyle: styles.headerTitle,
         }}
@@ -102,7 +101,7 @@ function StatsNavigator() {
   )
 }
 
-const SettingsStack = createStackNavigator<ParamList>()
+const SettingsStack = createStackNavigator()
 
 function SettingsNavigator() {
   return (

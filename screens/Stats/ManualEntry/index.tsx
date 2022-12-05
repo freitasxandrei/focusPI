@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import { Button, Paragraph, Dialog, Portal, Provider, TextInput } from 'react-native-paper'
 import { MS_PER_MINUTE } from '../../../constants/Units'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
-import { manualEntry } from '../../../redux/meditationSlice'
+import { manualEntry } from '../../../redux/trainingSlice'
 import { selectActivity } from '../../../redux/selectors'
 
 interface Props {

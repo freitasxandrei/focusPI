@@ -1,29 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Meditation } from '../data/meditations'
+import { Training } from '../data/trainings'
 
 export interface Activity {
-  // in miliseconds
   duration: number
 }
-export interface MeditationState {
-  // When the user meditated, the key is a date string, and the value is the Activity
+export interface TrainingState {
   activity: {
     [key: string]: Activity
   }
-  // Local file paths to the audio files downloaded from the server
   filepaths: string[]
 
-  favourites: Meditation[]
+  favourites: Training[]
 }
 
-const initialState: MeditationState = {
+const initialState: TrainingState = {
   activity: {},
   filepaths: [],
   favourites: [],
 }
 
-const meditationSlice = createSlice({
-  name: 'meditation',
+const trainingSlice = createSlice({
+  name: 'training',
   initialState,
   reducers: {
     completed(state, action: PayloadAction<number>) {
@@ -60,19 +57,19 @@ const meditationSlice = createSlice({
       if (!state.favourites) {
         state.favourites = []
       }
-      const meditation = action.payload
-      const meditationIndex = state.favourites.findIndex((item) => item.id === meditation.id)
-      const meditationAlreadyFavourited = meditationIndex !== -1
+      const training = action.payload
+      const trainingIndex = state.favourites.findIndex((item) => item.id === training.id)
+      const trainingAlreadyFavourited = trainingIndex !== -1
 
-      if (meditationAlreadyFavourited) {
-        state.favourites.splice(meditationIndex, 1)
+      if (trainingAlreadyFavourited) {
+        state.favourites.splice(trainingIndex, 1)
       } else {
-        state.favourites.push(meditation)
+        state.favourites.push(training)
       }
     },
   },
 })
 
 export const { completed, manualEntry, reset, addFilePath, updateFavourite } =
-  meditationSlice.actions
-export default meditationSlice.reducer
+  trainingSlice.actions
+export default trainingSlice.reducer

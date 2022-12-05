@@ -25,13 +25,10 @@ const Completed = ({ navigation }: Props) => {
   const onPressSkip = () => navigation.replace('Main')
 
   return (
+    <view>
     <Screen style={[styles.screen, { backgroundColor }]}>
       <Icon size={50} name="checkcircle" color={primaryColor} style={styles.checkMark} />
       <Text style={styles.title}> Congratulations!</Text>
-      <Text style={styles.description}>
-        You have completed {totalSessions} meditation{totalSessions === 1 ? '' : 's'}!{'\n'}Do you
-        want to give a donation?
-      </Text>
       <Button onPress={onPressDonate} style={styles.button} mode="contained" color={primaryColor}>
         Donate
       </Button>
@@ -44,6 +41,7 @@ const Completed = ({ navigation }: Props) => {
         Skip
       </Button>
     </Screen>
+    </view>
   )
 }
 

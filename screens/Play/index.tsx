@@ -5,18 +5,18 @@ import { Audio, AVPlaybackStatus } from 'expo-av'
 import PlayerControls from './PlayerControls'
 import Screen from '../../components/Screen'
 import { Text } from '../../components/Themed'
-import { useAppSelector, useMeditation } from '../../hooks'
+import { useAppSelector, useTraining } from '../../hooks'
 import NotFoundScreen from '../NotFoundScreen'
 import { HomeParamList, MainStackParamList } from '../../types'
 import { CompositeNavigationProp, RouteProp } from '@react-navigation/native'
 import { useMsToTime, useAppDispatch } from '../../hooks'
-import { completed, updateFavourite } from '../../redux/meditationSlice'
+import { completed, updateFavourite } from '../../redux/trainingSlice'
 import { LoadingScreen } from '../../components'
 import { useCallback } from 'react'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { selectFavourites, selectFilePaths } from '../../redux/selectors'
 import FavouriteButton from '../../components/FavouriteButton'
-import { Meditation } from '../../data/meditations'
+import { Training } from '../../data/trainings'
 
 type PlayRouteProp = RouteProp<HomeParamList, 'PlayScreen'>
 
@@ -30,7 +30,7 @@ interface Props {
 }
 export default function PlayScreen({ route, navigation }: Props) {
   const { id } = route.params
-  const meditation = useMeditation(id)
+  const training = useTraining(id)
   const favourites = useAppSelector(selectFavourites)
   const [isLoadingAudio, setIsLoadingAudio] = React.useState(true)
   const [isPlaying, setIsPlaying] = React.useState(false)
@@ -40,13 +40,13 @@ export default function PlayScreen({ route, navigation }: Props) {
   const durationTime = useMsToTime(durationMills)
   const positionTime = useMsToTime(positionMillis)
   const dispatch = useAppDispatch()
-  const uri = meditation?.uri || ''
+  const uri = training?.uri || ''
   const filepaths = useAppSelector(selectFilePaths)
 
-  const isFavourited = favourites.some((item: Meditation) => item.id === meditation?.id)
+  const isFavourited = favourites.some((item: Training) => item.id === training?.id)
 
   const onFavourite = () => {
-    dispatch(updateFavourite(meditation))
+    dispatch(updateFavourite(training))
   }
 
   const onPlaybackStatusUpdate = useCallback(
@@ -135,11 +135,11 @@ export default function PlayScreen({ route, navigation }: Props) {
     }
   }
 
-  if (!meditation) {
+  if (!training) {
     return <NotFoundScreen />
   }
 
-  const { title, subtitle, image } = meditation
+  const { title, subtitle, image } = training
 
   if (isLoadingAudio) {
     return <LoadingScreen loading={isLoadingAudio} />
