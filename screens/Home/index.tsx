@@ -77,7 +77,7 @@ export default function Home({ navigation }: Props) {
 
   return (
     <Screen scroll>
-      <Text style={styles.title}> MÚSICAS CALMAS PARA ALONGAR </Text>
+      <Text style={styles.title}> MÚSICAS PARA TREINAR </Text>
       <FlatList
         style={styles.cards}
         horizontal
