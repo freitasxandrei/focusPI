@@ -41,6 +41,7 @@ const Settings = ({ navigation }: Props) => {
     <>
       <List.Item title="Restaurar dados" onPress={clearData} />
     </>
+    
   )
 }
 

@@ -10,6 +10,7 @@ import { trainings, TrainingItem } from '../../data/trainings'
 import { HomeParamList } from '../../types'
 import { useAppSelector } from '../../hooks'
 import { selectFavourites } from '../../redux/selectors'
+import * as ImagePicker from 'expo-image-picker';
 
 interface Props {
   navigation: StackNavigationProp<HomeParamList, 'HomeScreen'>
@@ -18,6 +19,23 @@ interface Props {
 export default function Home({ navigation }: Props) {
   const textColor = useThemeColor({}, 'text')
   const favourites = useAppSelector(selectFavourites)
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
 
   const renderPopularCard = ({ item }: TrainingItem) => {
     return (
@@ -85,6 +103,11 @@ export default function Home({ navigation }: Props) {
         keyExtractor={({ id }) => id}
       />
 
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Button title="Pick an image from camera roll" onPress={pickImage} />
+        {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+      </View>
+
       {favourites.length > 0 && (
         <>
           <Text style={styles.title}> MÚSICAS FAVORITAS </Text>
@@ -142,12 +165,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 19,
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#ecf0f1',
+    },
+    image: {
+      width: 300,
+      height: 300,
+      resizeMode: 'contain',
+    },
   },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
-  },
-},
-)
+})

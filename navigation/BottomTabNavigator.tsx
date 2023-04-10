@@ -10,6 +10,7 @@ import HomeScreen from '../screens/Home'
 import PlayScreen from '../screens/Play'
 import SettingsScreen from '../screens/Settings'
 import StatsScreen from '../screens/Stats'
+import ShapeScreen from '../screens/Shape'
 import { BottomTabParamList, HomeParamList, SettingsParamList, StatsParamList } from '../types'
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>()
@@ -41,6 +42,13 @@ export default function BottomTabNavigator() {
         component={SettingsNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="setting" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Shape"
+        component={ShapeNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="woman" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -116,6 +124,24 @@ function SettingsNavigator() {
         }}
       />
     </SettingsStack.Navigator>
+  )
+}
+
+const ShapeStack = createStackNavigator()
+
+function ShapeNavigator() {
+  return (
+    <ShapeStack.Navigator>
+      <ShapeStack.Screen
+        name="ShapeScreen"
+        component={ShapeScreen}
+        options={{
+          headerTitle: 'Shape',
+          headerStyle: styles.header,
+          headerTitleStyle: styles.headerTitle,
+        }}
+      />
+    </ShapeStack.Navigator>
   )
 }
 

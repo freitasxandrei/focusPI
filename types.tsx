@@ -14,6 +14,7 @@ export type BottomTabParamList = {
   Início: NO_PARAMS
   Status: NO_PARAMS
   Configurações: NO_PARAMS
+  Shape: NO_PARAMS
 }
 
 export type HomeParamList = {
