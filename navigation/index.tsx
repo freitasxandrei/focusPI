@@ -13,36 +13,14 @@ import { RootStackParamList } from '../types'
 import MainNavigator from './MainNavigator'
 import LinkingConfiguration from './LinkingConfiguration'
 import { StatusBar } from 'expo-status-bar'
-import { initializeAnalytics, logEvent } from '../utils/analytics'
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   const navigationContainerRef = React.useRef<NavigationContainerRef<any>>(null)
-
-  React.useEffect(() => {
-    async function initialize() {
-      try {
-        await initializeAnalytics()
-      } catch (e) {
-        console.error(e)
-      }
-    }
-    initialize()
-  }, [])
-
-  const handleNavigationStateChange = async () => {
-    const currentRouteName = navigationContainerRef?.current?.getCurrentRoute()?.name
-    try {
-      await logEvent(`Screen:${currentRouteName}` || 'Screen:Unknown')
-    } catch (e) {
-      console.error(e)
-    }
-  }
 
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-      onStateChange={handleNavigationStateChange}
       ref={navigationContainerRef}
     >
       <StatusBar style="light" />
